@@ -2,23 +2,23 @@ var collapsedChildren = {}
 
 function removeCollapsedChildren() {
 	cy.nodes().forEach(function(item, index, array) {
-  				let id = item.data().id
+  		let id = item.data().id
     	        let cC = item.data().collapsedChildren
-        	    collapsedChildren[id] = {}
-    			collapsedChildren[id]['data']  = cC.json();
-  				delete item.data().collapsedChildren
+        	collapsedChildren[id] = {}
+    		collapsedChildren[id]['data']  = cC.json();
+  		delete item.data().collapsedChildren
 	});
 };
 function restoreCollapsedChildren() {
 	cy.nodes().forEach(function(item, index, array) {
-  	let id = item.data().id
-  	let cC = collapsedChildren[id]
-	item.data().collapsedChildren = cy.add(cC.data);
-    //cy.$id(cC.data.data.id).style("visibility", "hidden");
-    //cy.$id(cC.data.data.id).parents().style("border-width", "0");
-    console.log(cy.$id(cC.data.data.id).remove());
+  		let id = item.data().id
+  		let cC = collapsedChildren[id]
+		item.data().collapsedChildren = cy.add(cC.data);
+    		//cy.$id(cC.data.data.id).style("visibility", "hidden");
+    		//cy.$id(cC.data.data.id).parents().style("border-width", "0");
+    		console.log(cy.$id(cC.data.data.id).remove());
     
-  });
+  	});
 }
 
 removeCollapsedChildren();
