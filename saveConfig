@@ -1,30 +1,25 @@
 var collapsedChildren = {}
 
-function removeCollapsedChildren() {
+function removeCC() {
 	cy.nodes().forEach(function(item, index, array) {
-  		let id = item.data().id
-    	        let cC = item.data().collapsedChildren
+		let id = item.id();
+    	  	let cC = item.data().collapsedChildren
+        	let parentId = item.id();
         	collapsedChildren[id] = {}
-    		collapsedChildren[id]['data']  = cC.json();
-  		delete item.data().collapsedChildren
+    		collapsedChildren[id]['data']  = cC.jsons();
+    		delete cy.$id(id).data().collapsedChildren;
 	});
 };
-function restoreCollapsedChildren() {
-	cy.nodes().forEach(function(item, index, array) {
-  		let id = item.data().id
-  		let cC = collapsedChildren[id]
-		item.data().collapsedChildren = cy.add(cC.data);
-    		//cy.$id(cC.data.data.id).style("visibility", "hidden");
-    		//cy.$id(cC.data.data.id).parents().style("border-width", "0");
-    		console.log(cy.$id(cC.data.data.id).remove());
-    
-  	});
-}
-
-removeCollapsedChildren();
-
-//JSON.stringify(cy.json());
-//JSON.stringify(collapsedChildren);
-
-
-restoreCollapsedChildren();
+function restoreCC() {
+  	for (let parentId in collapsedChildren) {
+    		let arr = collapsedChildren[parentId].data;
+    		cy.$id(parentId).data().collapsedChildren = cy.add(arr);
+    		arr.forEach(function(item, index, array) {
+      			cy.$id(item.data.id).remove();
+    		});
+  	};
+};
+removeCC();
+//console.log(JSON.stringify(cy.json()));
+//console.log(JSON.stringify(collapsedChildren));
+restoreCC();
