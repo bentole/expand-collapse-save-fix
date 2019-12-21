@@ -45,7 +45,7 @@ function restoreOE() {
     };
 };
 // Function which REMOVES the collapsedChildren property of nodes and stores the data
-// as text/json obect in the stringifiable variable collapsedChildren 
+// as text/json obect in the stringifiable variable collapsedChildren. 
 function removeCC() {
 	cy.nodes().forEach(function(item, index, array) {
 		let cC = item.data().collapsedChildren
@@ -60,7 +60,8 @@ function removeCC() {
   	removeOE();
 };
 // Function that RESTORES the collapsedChildren property to the edges
-// This function creates new objects
+// This function creates new objects. The trick here is that the removed nodes
+// needs to be restored for each iteration for correct handling
 function restoreCC() {
     for (let parentId in collapsedChildren) {
         let arr = collapsedChildren[parentId].data;
