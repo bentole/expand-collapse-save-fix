@@ -19,7 +19,7 @@ var originalEnds = {}
 var removedNodes = cy.collection();
 
 // Function which REMOVES the originalEnds property of edges and stores the data
-// as text/json obect in the stringifiable variable originalEnds
+// as text/json obect in the stringifiable (is that even a word??) variable originalEnds
 function removeOE() {
   cy.edges().forEach(function(item, index, array) {
     let oE = item.data().originalEnds;
