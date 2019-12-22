@@ -8,8 +8,9 @@ var collapsedChildren = {}
 var originalEnds = {}
 var removedNodes = cy.collection();
 
-// Function which REMOVES the originalEnds property of edges and stores the data
-// as text/json obect in the stringifiable (is that even a word??) variable originalEnds
+// Function which REMOVES the originalEnds property 
+// of edges and stores the data
+// as a regular object in variable originalEnds
 function removeOE() {
   cy.edges().forEach(function(item, index, array) {
     let oE = item.data().originalEnds;
@@ -23,8 +24,9 @@ function removeOE() {
     };
   });
 };
-// Function that RESTORES the originalEnds property to the edges
-// Be aware that the source and target objects cannot be in removed() state
+// Function that RESTORES the originalEnds property 
+// to the edges. Be aware that the source and target
+// objects cannot be in removed() state
 function restoreOE() {
     for ( let edgeId in originalEnds ) {
         let edge = originalEnds[edgeId]
@@ -34,8 +36,9 @@ function restoreOE() {
         }
     };
 };
-// Function which REMOVES the collapsedChildren property of nodes and stores the data
-// as text/json obect in the stringifiable variable collapsedChildren. 
+// Function which REMOVES the collapsedChildren property 
+// of nodes and stores the data as a regular obect in the 
+// variable collapsedChildren. 
 function removeCC() {
 	cy.nodes().forEach(function(item, index, array) {
 		let cC = item.data().collapsedChildren
