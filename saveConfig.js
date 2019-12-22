@@ -1,17 +1,7 @@
 /*
 
 Ok, so this is a temporary workaround to the cyclic object problem which prevents graphs
-to be stringified and saved to backend. For this workaround to work the following lines in
-cytoscape-expand-collapse.js needs to be commented out:
-      while( !current.inside() ) {
-       current = parent;
-       parent = parentData[parent.id()];
-      }
-      return current;
-In addion, put a "return current" statement before this section. This effectively means the depth
-of the compound is constricted to one which is good enough for me, but I'll look into this further
-
-Oh and theres a minor positioning issue...
+to be stringified and saved to backend. 
 
 */
 var collapsedChildren = {}
