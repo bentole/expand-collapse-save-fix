@@ -10,7 +10,7 @@ var originalEnds = {}
 var removedNodes = cy.collection();
 
 // Function which REMOVES the originalEnds property 
-// of edges and stores the data
+// of edges after storing the data
 // as a regular object in variable originalEnds
 function removeOE() {
   cy.edges().forEach(function(item, index, array) {
@@ -38,7 +38,7 @@ function restoreOE() {
     };
 };
 // Function which REMOVES the collapsedChildren property 
-// of nodes and stores the data as a regular obect in the 
+// of nodes after storing the data as a regular obect in the 
 // variable collapsedChildren. 
 function removeCC() {
 	cy.nodes().forEach(function(item, index, array) {
@@ -55,7 +55,7 @@ function removeCC() {
 };
 // Function that RESTORES the collapsedChildren property to the edges
 // This function creates new objects. The trick here is that the removed nodes
-// needs to be restored for each iteration for correct handling
+// need to be restored for each iteration for correct handling
 function restoreCC() {
     for (let parentId in collapsedChildren) {
         let arr = collapsedChildren[parentId].data;
