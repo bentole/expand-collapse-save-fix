@@ -1,4 +1,3 @@
-/*
 
 Ok, so this is a temporary workaround to 
 the cyclic object problem which prevents graphs
