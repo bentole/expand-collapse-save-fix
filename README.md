@@ -5,7 +5,7 @@ FIX to cytoscape.js expand-collapse which allows the graphs to be saved in colla
 The IDEA behind this fix is as follows:
 
 1. Replace circular objects in originalEnds and collapsedChildren properties with regular JSON. Data loss is to be expected
-2. POST cy.jsons() as you would in any case.
+2. POST cy.json() as you would in any case.
 3. Restore the original properties and objects.
 4. Naturally, the restoration also needs to be executed, if necessary, in a graph load event.
 
