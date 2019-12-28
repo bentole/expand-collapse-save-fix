@@ -1,18 +1,17 @@
 
 /*
+
 Ok, so this is a temporary workaround to 
 the cyclic object problem which prevents graphs
 to be stringified and saved to backend. 
 
-Optimizing the master code
-
-
 */
+
+// Variable to temporarily store re-created node objects
 var removedNodes = cy.collection();
 
-// Function which REMOVES the originalEnds property 
-// of edges after storing the data
-// as a regular object in variable originalEnds
+// Function that replaces the originalEnds property 
+// of edges with non-circular objects
 function removeOE() {
   cy.edges().forEach(function(item, index, array) {
     let oE = item.data().originalEnds;
@@ -26,9 +25,10 @@ function removeOE() {
     };
   });
 };
-// Function that RESTORES the originalEnds property 
-// to the edges. Be aware that the source and target
-// objects cannot be in removed() state
+// Function that restores the originalEnds property 
+// to the edges. It has to test that the source property
+// is a string and that the target is defined for 
+// restoration to be successful
 function restoreOE() {
 	cy.edges().forEach(function(item, index, array) {
 		var oE = item.data().originalEnds;
@@ -42,9 +42,8 @@ function restoreOE() {
 	});
 };
   
-// Function which REMOVES the collapsedChildren property 
-// of nodes after storing the data as a regular obect in the 
-// variable collapsedChildren. 
+// Function that replaces the collapsedChildren property 
+// of nodes with non-circular JSON objects.
 function removeCC() {
 	cy.nodes().forEach(function(item, index, array) {
 		let cC = item.data().collapsedChildren
@@ -54,9 +53,10 @@ function removeCC() {
 	});
 	removeOE();
 };
-// Function that RESTORES the collapsedChildren property to the edges
-// This function creates new objects. The trick here is that the removed nodes
-// need to be restored for each iteration for correct handling
+// Function that restores the collapsedChildren property. 
+// This performs restoration by recreating the nodes lost in
+// the previous removal process. It also needs to remove them after 
+// to not mess up the graph view.
 function restoreCC() {
 	cy.nodes().forEach(function(item, index, array) {
 		let cC = item.data().collapsedChildren;
