@@ -63,6 +63,7 @@ function restoreCC() {
 		if ( cC ) {
 			item.data().collapsedChildren = cy.add(cC);
 			removedNodes.restore();
+			restoreOE();
 			cC.forEach(function(item, index, array) {
 				restoreOE();
 				removedNode = cy.$id(item.data.id);
