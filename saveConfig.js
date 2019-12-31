@@ -73,6 +73,8 @@ function restoreCC() {
 
       		};
     	});
+	//Resett removedNodes
+        removedNodes = cy.collection();
 };
 // this function is for sample only to illustrate and test that
 // data can be stringified and saved to backend
