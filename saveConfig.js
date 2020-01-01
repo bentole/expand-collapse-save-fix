@@ -12,7 +12,7 @@ var removedNodes = cy.collection();
 
 // Function that replaces the originalEnds property 
 // of edges with non-circular objects
-function removeOE() {
+function replaceOE() {
   cy.edges().forEach(function(item, index, array) {
     let oE = item.data().originalEnds;
     if ( oE ) {
@@ -44,14 +44,14 @@ function restoreOE() {
   
 // Function that replaces the collapsedChildren property 
 // of nodes with non-circular JSON objects.
-function removeCC() {
+function replaceCC() {
 	cy.nodes().forEach(function(item, index, array) {
 		let cC = item.data().collapsedChildren
 		if ( cC ) {
 			cy.$id(item.id()).data().collapsedChildren = cC.jsons();
 		};
 	});
-	removeOE();
+	replaceOE();
 };
 // Function that restores the collapsedChildren property. 
 // This performs restoration by recreating the nodes lost in
@@ -83,6 +83,6 @@ function save() {
 };
 // So this is it. First remove the cyclic objects, then save to backend.
 // Restore after to continue business as usual.
-removeCC();
+replaceCC();
 save();
 restoreCC();
