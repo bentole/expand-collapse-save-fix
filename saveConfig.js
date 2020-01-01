@@ -73,7 +73,7 @@ function restoreCC() {
 
       		};
     	});
-	//Resett removedNodes
+	//Reset removedNodes
         removedNodes = cy.collection();
 };
 // this function is for sample only to illustrate and test that
