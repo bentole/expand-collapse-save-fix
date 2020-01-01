@@ -40,7 +40,7 @@ cy.ready(function(e) {
   restoreCC();
 });
 $(document).ready(function() {
-  $("#lagre").click(function() {
+  $("#save").click(function() {
     replaceCC();
     $.post(".", { 'save_config': JSON.stringify(cy.json()) }, null, 'json' );
     restoreCC();
