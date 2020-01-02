@@ -27,7 +27,7 @@ function replaceOE() {
 };
 // Function that restores the originalEnds property 
 // to the edges. It has to test that the source property
-// is a string and that the target is defined for 
+// is a string and that the source & target is defined for 
 // restoration to be successful
 function restoreOE() {
 	cy.edges().forEach(function(item, index, array) {
