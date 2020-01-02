@@ -11,7 +11,7 @@ The IDEA behind this fix is as follows:
 
 __Sample__ 
 
-I've just tested the implementation on my project and so far it seems to be working well. MY implementation looks like this in all simplicity. There are most certainly more efficient ways to do this
+I've just tested the implementation on my project and so far it seems to be working well. MY implementation looks like this 
 
 ```
 var cy = cytoscape({
