@@ -33,7 +33,8 @@ function restoreOE() {
 	cy.edges().forEach(function(item, index, array) {
 		var oE = item.data().originalEnds;
 		if ( oE && typeof oE.source == 'string'
-	  	&& cy.$id(oE.target).length > 0 ) {
+	  	&& cy.$id(oE.target).length > 0
+		&& cy.$id(oE.source).length > 0) {
 	      		item.data().originalEnds = {
 				source: cy.$id(oE.source),
 				target: cy.$id(oE.target)
@@ -65,7 +66,6 @@ function restoreCC() {
 			removedNodes.restore();
 			restoreOE();
 			cC.forEach(function(item, index, array) {
-				restoreOE();
 				removedNode = cy.$id(item.data.id);
                 		removedNodes = removedNodes.union(removedNode);
 				removedNodes.remove();
