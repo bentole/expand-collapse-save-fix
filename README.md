@@ -1,6 +1,6 @@
 # expand-collapse-save-fix
 
-FIX to i-Vis at Bilkents cytoscape.js-expand-collapse which allows the graphs to be exported in JSON with elements in collapsed state
+FIX to [i-Vis at Bilkents cytoscape.js-expand-collapse](https://github.com/iVis-at-Bilkent/cytoscape.js-expand-collapse) which allows the graphs to be exported in JSON with elements in collapsed state
 
 The IDEA behind this fix is as follows:
 
